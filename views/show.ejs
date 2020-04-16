@@ -1,0 +1,42 @@
+<%- include("./partials/header.ejs")%>
+
+    <div class="ui stackable grid">
+        <div class="eight wide column">
+            <div class="ui two wide column left attached rail">
+                <img class="images" src="https://images-na.ssl-images-amazon.com/images/I/A15AirQxMFL._AC_SX425_.jpg">
+            </div>
+            <div class="ui segment" style="margin-top: 0;">
+                <div class="ui header main-header">
+                    <h1><%= movie.title%></h1>
+                </div>    
+                <hr class="header-hr"> 
+            </div>
+            <div class="ui segment">
+                <div class="content">
+                    <div id="genre" class="meta lg-fnt">
+                        <span>Genre: <%= movie.genre%></span>
+                        <small id="dateAdded">date added: <%= movie.dateAdded.toDateString()%></small>
+                        </div> 
+                    <div id="status" class="meta">
+                        <span id="status" class="">Status: <%= movie.status%></span>
+                    </div>
+                    <div id="synopsis">
+                        <h1>Synopsis</h1>
+                        <%= movie.synopsis%>
+                    </div>
+                    <div class="btn-div">
+                        <a href="/watchlist/<%= movie._id%>/edit">
+                            <button class="ui inverted secondary button">edit</button>
+                        </a>
+                        <form action="/watchlist/<%= movie.id%>?_method=DELETE" method="POST">
+                            <button class="ui inverted secondary button" type="submit"> Delete</button>
+                        </form>
+                        <a href="/watchlist/">
+                            <button class="ui inverted secondary button">Back</button>        
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include("./partials/footer.ejs")%>

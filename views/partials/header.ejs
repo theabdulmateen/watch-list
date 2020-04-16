@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watch List</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/23abeeb494.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+</head>
+<body>
+    <div class="ui menu top attached inverted">
+        <div class="ui container">
+            <div class="item">
+                <a href="/watchlist"><i class="icon tags"></i>Home</a>
+            </div>
+            <div class="item">
+                <a href="/watchlist/new">New Item</a>
+            </div>
+            <div class="right menu">
+                <% if (!currentUser) { %>
+                    <div class="item">
+                        <a href="/login">Login</a>
+                    </div>
+                    <div class="item">
+                        <a href="/register">Sign Up</a>
+                    </div>
+                <% } else { %>
+                    <div class="item">
+                        <span>Signed in as: <%= currentUser.username%></span>
+                    </div>
+                    <div class="item">
+                        <a href="/logout">Logout</a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    

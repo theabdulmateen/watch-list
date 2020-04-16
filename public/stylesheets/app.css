@@ -1,0 +1,375 @@
+body {
+    background-color: #e2e2e2;
+    color: #7a7575;
+    outline: none;
+    text-decoration: none;
+}
+
+
+/*===============================================================================================*/
+/*font fam*/
+/*===============================================================================================*/
+.main-header h1, #genre, #status, #synopsis, .header h3, .ui.menu, .ui.left.rail .ui.segment.list .item a {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+/*===============================================================================================*/
+/*navbar*/
+/*===============================================================================================*/
+.ui.menu {
+    height: 75px;
+    font-size: 1.4em;
+    letter-spacing: 4px;
+}
+
+i.icon.tags {
+    margin-right: 15px;
+}
+
+.ui.menu.top {
+    margin-bottom: 60px;
+}
+
+
+
+/*===============================================================================================*/
+/*left rail*/
+/*===============================================================================================*/
+.ui.left.rail .ui.segment.list {
+    padding: 0;
+}
+
+.ui.left.rail .ui.segment.list .item {
+    padding: 0 10px;
+}
+
+.ui.left.rail .ui.segment.list .item a{
+    width: 100%;
+    height: 100%;
+    color: #7a7575;
+    display: flex;
+    align-items: center;
+}
+
+.ui.left.rail .ui.segment.list .item a:hover {
+    color: #c96d73;
+}
+
+.ui.left.rail .ui.segment.list .item a span{
+    margin-left: 10px;
+    font-size: 1.3em;
+}
+
+.ui.left.rail .ui.segment button {
+    width: 100%;
+    height: 40px;
+    border-radius: 0;
+    background-color: #eed2d2;
+    color: #ffffff;
+}
+
+/*===============================================================================================*/
+/*Movie / TV Show image*/
+/*===============================================================================================*/
+.images {
+    width: 100%;
+}
+
+.thumb {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+}
+
+.ui.image {
+    margin-top: -5px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+}
+
+/*===============================================================================================*/
+/*Structure of the grids and segments*/
+/*===============================================================================================*/
+.ui.segment {
+    background-color: #ffffff;
+    border: #dbbdbd 1px solid;
+    -webkit-box-shadow: 1px 1px 22px -9px rgba(0,0,0,0.73);
+    -moz-box-shadow: 1px 1px 22px -9px rgba(0,0,0,0.73);
+    box-shadow: 1px 1px 22px -9px rgba(0,0,0,0.73);
+}
+
+.ui.segment.container {
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.ui.grid {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    padding: 0!important;
+}
+
+.item:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+
+/*===============================================================================================*/
+/*TItle / header*/
+/*===============================================================================================*/
+.main-header {
+    height: 75px;
+    display: flex;
+}
+
+.main-header h1 {
+    font-size: 2.3em;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c96d73;
+}
+
+.main-header .fa-bookmark {
+    margin-left: 35px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #7a7575;
+}
+
+.header-hr {
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(215, 209, 201, 0), rgba(215, 209, 201, 0.75), rgba(215, 209, 201, 0));
+    margin-bottom: 30px;
+}
+
+.header h3 {
+    letter-spacing: 2.5px;
+    line-height: 40px;
+    font-size: 1.6em;
+}
+.header h3 a {
+    color: #857f7f;
+}
+
+.header h3 a:hover {
+    color: #ef616a;
+}
+
+
+/*===============================================================================================*/
+/*content*/
+/*===============================================================================================*/
+.middle.aligned.content {
+    padding-left: 15px;
+}
+
+.image.outline.icon {
+    position: absolute;
+    top: -10px;
+    font-size: 3.7em;
+    display: inline-flex!important;
+}
+
+.ui.list .item {
+    width: 100%;
+    height: 75px;
+    padding: 0 30px;
+    margin: 0;
+    display: inline-flex;
+}
+
+.list .item {
+    height: 50px;
+}
+
+#genre {
+    letter-spacing: 2.5px;
+    color: #bf616a;
+}
+
+#status {
+    font-size: 1.14em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#dateAdded {
+    float: right;
+    color: #cccccc;
+    letter-spacing: 0px;
+    font-size: 0.5em;
+}
+
+#synopsis {
+    margin: 20px 35px 50px 0;
+    line-height: 1.75em;
+    letter-spacing: 2px;
+}
+
+/* .edit.icon {
+    font-size: 1.25em;
+    display: inline-flex;
+    justify-content: center;
+    color: #ef616a;
+} */
+
+
+.lg-fnt {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.content {
+    padding: 10px 40px;
+}
+
+.btn-div {
+    display: inline-flex;
+}
+
+.ui.inverted.secondary.button {
+    width: 225px;
+    height: 50px;
+    font-size: 1.75em;
+    padding: 0;
+    color: #7a7575;
+}
+
+.ui.inverted.secondary.button:hover {
+    color: #ef616a;
+}
+
+.input, #textArea, select {
+    background-color: #fafafa;
+    color: #7a7575;
+    font-size: 1.4em;
+    outline: none;
+    resize: none;
+    border: 4px solid #d6c4c4!important;
+}
+
+label {
+    color: #7a7575;
+    font-size: 2em!important;
+    margin: 15px!important;
+}
+
+.right {
+    margin-top: 30px;
+}
+
+.ui.inverted.form label {
+    color: #7a7575;
+}
+
+/*===============================================================================================*/
+/* Comments Section */
+/*===============================================================================================*/
+
+#commentSection {
+    margin-top: 150px;
+    padding-top: 75px;
+}
+
+
+.ui.container.comments-content {
+    background-color: #e2e2e2;
+    padding-top: 30px;
+    border:#e2bcbc 1px solid;
+    -webkit-box-shadow: 1px 1px 22px -9px rgba(0,0,0,0.73);
+    -moz-box-shadow: 1px 1px 22px -9px rgba(0,0,0,0.73);
+    box-shadow: 1px 1px 22px -9px rgba(0,0,0,0.73);
+}
+
+.ui.container.comments-content label {
+    padding-left: 15px;
+    font-size: 1.2em!important;
+}
+
+.ui.container form textarea {
+    padding: 10px;
+}
+
+.ui.container form div textarea {
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+.ui.container form div {
+    margin-top: 0;
+    height: 40px;
+    display: flexbox;
+}
+
+.ui.container form button {
+    width: 75px;
+    height: 35px;
+    display: flex;
+    float: right;
+    justify-content: center;
+}
+
+.ui.container div .comments {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.ui.container div .comments div small {
+    margin-left: 10px;
+}
+
+.ui.container div .comments p {
+    margin-top: 5px;
+    font-size: 1.3em;
+}
+
+.comment-toolbar {
+    display: flex;
+}
+
+.overflow-content {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.ui.dropdown + .menu {
+    width: 100%;
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    display: inline-flex;
+    visibility: hidden;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.ui.vertical.buttons{
+    box-shadow: 0 0 10px #787878!important;
+}
+
+.animation-display {
+    opacity: 1!important;
+}
+
+.display-overflow {
+    visibility: visible!important;
+}

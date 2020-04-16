@@ -1,0 +1,44 @@
+<%- include("./partials/header.ejs")%>
+
+    <div class="ui stackable grid">
+        <div class="row">
+            <div class="eight wide column">
+                <div class="ui segment">
+                    <div class="main-header">
+                        <h1>Sign Up!</h1>
+                    </div>    
+                    <hr class="header-hr"> 
+                </div>
+            </div>    
+        </div>
+        <div class="row">
+            <div class="eight wide column">
+                <div class="ui segment">
+                    <form class="ui form inverted" action="/register" method="POST">
+                        <div class="field">
+                            <label>Username</label>
+                            <input class="input" type="text" name="username" placeholder="username">
+                        </div>  
+                        <div class="field">
+                            <label>Password</label>  
+                            <input class="input" type="password" name="password" placeholder="password"></input>
+                        </div>
+                        <div class="btn-div">
+                            <button class="ui button" type="submit">Register</button>
+                            <a href="/login"><button type="button" class="ui button">login?</button></a>    
+                        </div>
+                    </form>
+                </div>
+            </div>    
+        </div>
+    </div>
+
+
+
+<%- include("./partials/footer.ejs")%>
+
+    <!-- <form action="/register" method="POST">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button>Submit</button>
+    </form> -->
