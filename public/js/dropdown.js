@@ -5,11 +5,11 @@ let hideId;
 for (let i = 0; i < dropdownButtons.length; i++) {
     // toggle the display of overflow list
     dropdownButtons[i].addEventListener("click", () => {
-        if (menuList[i].classList.contains("display-overflow")) {
-            menuList[i].classList.remove("animation-display");
+        if (menuList[i].classList.contains("visible")) {
+            menuList[i].classList.remove("opacity-one");
         } else {
-            menuList[i].classList.add("display-overflow");
-            menuList[i].classList.add("animation-display");
+            menuList[i].classList.add("visible");
+            menuList[i].classList.add("opacity-one");
         };
     });
 
@@ -31,8 +31,8 @@ for (let i = 0; i < dropdownButtons.length; i++) {
     });
 
     menuList[i].addEventListener("transitionend", () => {
-        if (!menuList[i].classList.contains("animation-display")) {
-            menuList[i].classList.remove("display-overflow");
+        if (!menuList[i].classList.contains("opacity-one")) {
+            menuList[i].classList.remove("visible");
         }
         event.stopPropagation();
     });
@@ -53,12 +53,12 @@ for (let i = 0; i < dropdownButtons.length; i++) {
     // }); 
     // buttonGroup[i].addEventListener("focusout", (event) => {
     //    if (hideOverflow) {
-    //         menuList[i].classList.remove("animation-display");
+    //         menuList[i].classList.remove("opacity-one");
     //     } 
     // })
 
 }
 
 function hideFunc(index) {
-    menuList[index].classList.remove("animation-display");
+    menuList[index].classList.remove("opacity-one");
 }

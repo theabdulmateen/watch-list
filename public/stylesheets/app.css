@@ -326,19 +326,23 @@ label {
     justify-content: center;
 }
 
-.ui.container div .comments {
+.ui.container div .comment {
     margin-bottom: 30px;
     font-size: 1.2em;
 }
 
-.ui.container div .comments div small {
+.ui.container div .comment div small {
     margin-left: 10px;
 }
 
-.ui.container div .comments p {
+.ui.container div .comment p {
     margin-top: 5px;
     font-size: 1.3em;
 }
+
+/*==================*/
+/* Comments toolbar */
+/*==================*/
 
 .comment-toolbar {
     display: flex;
@@ -366,10 +370,43 @@ label {
     box-shadow: 0 0 10px #787878!important;
 }
 
-.animation-display {
+
+/*===============*/
+/* Edit form*/
+/*===============*/
+
+.form-edit {
+    display: none;
+    opacity: 0;
+    transition: all 0.2s ease-in;
+}
+
+.comment-toolbar {
+    opacity: 1;
+    transition: all 0.2s ease-out;
+}
+
+.comment-text {
+    opacity: 1;
+    transition: all 0.2s ease-out;
+}
+
+/*===============*/
+/* miscellaneous*/
+/*===============*/
+
+.opacity-one {
     opacity: 1!important;
 }
 
-.display-overflow {
+.visible {
     visibility: visible!important;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none!important;
 }

@@ -19,19 +19,28 @@
                 
             <div style="margin: auto 30px; margin-bottom: 30px;">
                 <% comments.forEach(function(comment) { %>
-                    <div class="comments">
-                        <div><%= comment.user.username  %> <small class=""> | <%= comment.dateAdded.toDateString() %></small> </div>
-                        <div style="margin-bottom: 5px; margin-top: 5px;"><%= comment.text %></div>
+                    <div class="comment">
+                        <div><%= comment.user.username %> <small class=""> | <%= comment.dateAdded.toDateString() %></small> </div>
+                        <div class="comment-text" style="margin-bottom: 5px; margin-top: 5px;"><%= comment.text %></div>
+                        <div class="form-edit">
+                            <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                <div style="width: 100%; height: 100px; margin-top: 4px;">
+                                    <textarea id="textArea" name="text" placeholder="Join the discussion..."><%= comment.text %></textarea>
+                                </div>
+                                <div style="height: 10px; margin: 15px 25px;">
+                                    <button style="background-color: #c3c3c3" type="button" class="ui icon cancel button">Cancel</button>
+                                    <button style="background-color: #c3c3c3" class="ui icon button">Save</button>
+                                </div>
+                            </form>
+                        </div>
                         <div class="comment-toolbar">
                                 <button style="display: flex;" class="ui compact icon button">
                                     <i class="comment icon"></i><span style="margin-left: 4px">reply</span>
                                 </button>
-                                <button class="ui compact icon button">
-                                    share
-                                </button>
-                                <button class="ui compact icon button edit-button">
-                                    edit
-                                </button>
+                                <button class="ui compact icon button"> share </button>
+                                <% if (currentUser && currentUser.username === comment.user.username) { %>
+                                    <button class="ui compact icon button edit-button"> edit </button>
+                                <% } %>
                             <div class="overflow-content">
                                 <div tabindex="0" class="ui compact icon inline dropdown button">
                                     <i class="ellipsis horizontal icon"></i>
@@ -39,10 +48,12 @@
                                 <div role="menu" class="menu" aria-haspopup="true">
                                     <div class="ui vertical buttons">
                                         <form method="POST">
-                                            <button role="menuitem" class="ui button" formaction=""><i class="comment icon"></i> Reply</button>
-                                            <button role="menuitem" class="ui button" formaction=""><i class="share icon"></i> share</button>
-                                            <button role="menuitem" class="ui button edit-button" type="button"><i class="edit icon"></i>edit  </button>
-                                            <button role="menuitem" class="ui button" formaction="comments/<%= comment._id%>?_method=DELETE"><i class="trash icon"></i> delete</button>    
+                                            <button role="menuitem" class="ui button" formaction=""><i class="comment icon"></i> Reply </button>
+                                            <button role="menuitem" class="ui button" formaction=""><i class="share icon"></i> share </button>
+                                            <% if (currentUser && currentUser.username === comment.user.username) { %>
+                                                <button role="menuitem" class="ui button edit-button" type="button"><i class="edit icon"></i> edit </button>
+                                                <button role="menuitem" class="ui button" formaction="comments/<%= comment._id%>?_method=DELETE"><i class="trash icon"></i> delete </button>    
+                                            <% } %>
                                         </form>
                                     </div>
                                 </div> 

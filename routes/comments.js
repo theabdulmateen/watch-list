@@ -16,7 +16,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
                 console.log(err);
                 req.redirect("/home");
             } else {
-                res.back();
+                res.redirect("back");
             }
         });
     } else {
@@ -26,7 +26,8 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 
 // edit route
 router.put("/:comment_id", middleware.isLoggedIn, (req, res) => {
-    Comment.findByIdAndUpdate(req.params.comment_id, req.params.text, (err, comment) => {
+    console.log("Reached put route");
+    Comment.findByIdAndUpdate(req.params.comment_id, { text: req.body.text, user: req.user }, (err, comment) => {
         if (err) {
             console.log(err);
             res.redirect("back");

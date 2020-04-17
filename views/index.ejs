@@ -17,40 +17,51 @@
         <div class="ui list">
             <div class="ui header main-header"><i class="far fa-bookmark"></i><h1>Watch List</h1></div>
             <hr class="header-hr"> 
-            <% movies.forEach((movie) => { %>
+            <% if (movies.length === 0) { %>
                 <div class="item">
                     <div class="ui grid">
-                        <div class="one wide column">
-                            <a href="/watchlist/<%= movie.id%>" class="thumb">
-                                <img class="ui image" src="https://images-na.ssl-images-amazon.com/images/I/A15AirQxMFL._AC_SX425_.jpg">
-                            </a>
+                        <div style="font-size: 2em" class="header">
+                            <span>Your WatchList is Empty.</span>
                         </div>
-                        <div class="ten wide column">
-                            <div class="middle aligned content">
-                                <div class="header">
-                                    <h3><a href="/watchlist/<%= movie.id%>"><%= movie.title %></a></h3>
-                                </div>
-                                <div id="genre" class="meta">
-                                    <span><%= movie.genre%></span>
-                                </div>    
-                            </div>
-                        </div>    
-                        <div class="three wide column">
-                            <div id="status" class="meta">
-                                <span id="status" class="right"><%= movie.status%></span>
-                            </div>
-                        </div>
-                        <div class="one wide column">
-                            <a href="/watchlist/<%= movie._id%>/edit">
-                                <button class="ui compact labeled icon button">
-                                    <i class="edit icon"></i>
-                                    edit
-                                </button>           
-                            </a>
-                        </div>
+                        <a href="/watchlist/new"><button class="ui icon button">Add New item</button></a>
                     </div>
                 </div>
-            <% }); %>
+            <% } else { %>
+                <% movies.forEach((movie) => { %>
+                    <div class="item">
+                        <div class="ui grid">
+                            <div class="one wide column">
+                                <a href="/watchlist/<%= movie.id%>" class="thumb">
+                                    <img class="ui image" src="https://images-na.ssl-images-amazon.com/images/I/A15AirQxMFL._AC_SX425_.jpg">
+                                </a>
+                            </div>
+                            <div class="ten wide column">
+                                <div class="middle aligned content">
+                                    <div class="header">
+                                        <h3><a href="/watchlist/<%= movie.id%>"><%= movie.title %></a></h3>
+                                    </div>
+                                    <div id="genre" class="meta">
+                                        <span><%= movie.genre%></span>
+                                    </div>    
+                                </div>
+                            </div>    
+                            <div class="three wide column">
+                                <div id="status" class="meta">
+                                    <span id="status" class="right"><%= movie.status%></span>
+                                </div>
+                            </div>
+                            <div class="one wide column">
+                                <a href="/watchlist/<%= movie._id%>/edit">
+                                    <button class="ui compact labeled icon button">
+                                        <i class="edit icon"></i>
+                                        edit
+                                    </button>           
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
         </div>
     </div>
     
