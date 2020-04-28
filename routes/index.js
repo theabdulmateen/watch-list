@@ -1,6 +1,7 @@
 const express     = require("express"),
       router      = express.Router(),
       passport    = require("passport"),
+      // jikanjs   = require("jikanjs"),
       User        = require("../models/user.js");
 
 router.get("/", function(req, res) { 

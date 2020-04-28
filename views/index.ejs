@@ -1,4 +1,19 @@
 <%- include("./partials/header.ejs")%>
+    
+
+    <div id="searchSection" class="ui segment">
+        <div class="search">
+            <form class="ui form inverted">
+                <div class="field">
+                    <label>Search for an anime</label>
+                    <input id="anime-search" class="input" type="text" name="username" placeholder="search eg.(Kaguya-sama)">
+                </div>  
+            </form>
+        </div>
+        <div class="search-list">
+        </div>
+    </div>
+
 
     <div class="ui segment container">
         <div class="ui left rail">
@@ -30,7 +45,7 @@
                 <% movies.forEach((movie) => { %>
                     <div class="item">
                         <div class="ui grid">
-                            <div class="one wide column">
+                            <div class="two wide column" style="width: 10%!important; height: 100%; padding: 5px;">
                                 <a href="/watchlist/<%= movie.id%>" class="thumb">
                                     <img class="ui image" src="https://images-na.ssl-images-amazon.com/images/I/A15AirQxMFL._AC_SX425_.jpg">
                                 </a>
@@ -45,7 +60,7 @@
                                     </div>    
                                 </div>
                             </div>    
-                            <div class="three wide column">
+                            <div class="two wide column">
                                 <div id="status" class="meta">
                                     <span id="status" class="right"><%= movie.status%></span>
                                 </div>
@@ -64,5 +79,7 @@
             <% } %>
         </div>
     </div>
+
+    <script src="/js/jikan-bundle.js"></script>
     
 <%- include("./partials/footer.ejs")%>

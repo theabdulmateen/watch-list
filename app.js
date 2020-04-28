@@ -1,11 +1,3 @@
-// personal watchlist 
-// RESTful structural design
-
-// future additions??
-//      Authentication <done>
-//      Categorising into movies, shows, anime etc
-//      Add MAL/imdb score
-
 // import packages
 const   bodyParser          = require("body-parser"),
         mongoose            = require("mongoose"),
@@ -16,6 +8,10 @@ const   bodyParser          = require("body-parser"),
         Comment             = require("./models/comment.js"),
         passport            = require("passport"),
         localStrategy       = require("passport-local"),
+        cors                = require("cors"),
+        path                = require("path"),
+        fs                  = require('fs'),
+        browserify          = require("browserify"),
         express             = require("express"),
         app                 = express();
 
@@ -42,7 +38,6 @@ app.use(methodOverride("_method"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // passport config
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -57,11 +52,24 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(cors());
+
 // Using the routes
 app.use("/watchlist", watchlistRoutes);
 app.use("/", indexRoutes);
 app.use("/comments", commentsRoutes);
 
+const input = path.join(__dirname, '/public/js/jikan.js')
+const output = path.join(__dirname, '/public/js/jikan-bundle.js')
+
+const b = browserify(input)
+
+b.bundle(function (err, buf) {
+  if (err) return console.log(err);
+  fs.writeFile(output, buf, function (err) {
+    if (err) return console.log(err);
+  });
+});
 
 app.listen("3000", () => {
     console.log("listening on 3000");

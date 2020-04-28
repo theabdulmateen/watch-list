@@ -1,5 +1,6 @@
 const   express     = require("express"),
         router      = express.Router(),
+        jikanjs     = require("jikanjs"),
         Watchlist   = require("../models/watchList");
 
 // index route
@@ -13,12 +14,8 @@ router.get("/", isLoggedIn, (req, res) => {
 // create route
 router.post("/", isLoggedIn, (req, res) => {
     // create new item 
-    // req.body.movie.user: {
-    //     id: req.user._id,
-    //     username: req.user.username
-    // }
     req.body.movie.synopsis = req.sanitize(req.body.movie.synopsis);
-    Watchlist.create(req.body.movie, (err, movie) => {
+    Watchlist.create(req.body.movie,  (err, movie) => {
         if (err) {
             res.redirect("/new");   
         } else {
@@ -39,7 +36,7 @@ router.get("/new", isLoggedIn, (req, res) => {
 router.get("/:id", isLoggedIn, (req, res) => {
     Watchlist.findById(req.params.id, (err, movie) => {
         if (err) {
-            // res.render("show", {movie: foundMovie});
+            console.log(err);
             res.redirect("/watchlist");
         } else {
             res.render("show", {movie: movie});
@@ -76,6 +73,8 @@ router.put("/:id", isLoggedIn, (req, res) => {
 router.delete("/:id", isLoggedIn, (req, res) => {
     Watchlist.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
+            console.log(err);
+            console.log("Sdkjsd;")
             res.redirect("/watchlist/" +  req.params.id);
         } else {
             res.redirect("/watchlist");
