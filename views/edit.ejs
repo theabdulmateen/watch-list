@@ -1,4 +1,4 @@
-<%- include("./partials/header.ejs")%>
+<%- include("./partials/header.ejs") %>
 
     <script type="text/javascript">
         console.log("sds ");
@@ -9,7 +9,7 @@
             <div class="eight wide column">
                 <div class="ui segment">
                     <div class="main-header">
-                        <h1>EDIT <%= movie.title%></h1>
+                        <h1>EDIT: <%= movie.title %></h1>
                     </div>    
                     <hr class="header-hr"> 
                 </div>
@@ -22,20 +22,24 @@
                         <div class="two fields">
                             <div class="field">
                                 <label>Title</label>
-                                <input class="input" type="text" name="movie[title]" placeholder="Title" value="<%= movie.title%>">
+                                <input class="input" type="text" name="movie[title]" placeholder="Title" value="<%= movie.title %>">
                             </div>  
                             <div class="field">
                                 <label>Genre</label>
-                                <input class="input" type="text" name="movie[genre]" placeholder="Genre" value="<%= movie.genre%>">
+                                <input class="input" type="text" name="movie[genre]" placeholder="Genre" value="<%= movie.genre %>">
                             </div>
                         </div>
                         <div class="field">
                             <label>Synopsis</label>  
-                            <textarea id="textArea" name="movie[synopsis]" placeholder="synopsis"><%= movie.synopsis%></textarea>
+                            <textarea id="textArea" name="movie[synopsis]" placeholder="synopsis"><%= movie.synopsis %></textarea>
+                        </div>
+                        <div class="field">
+                            <label>Image URL</label>
+                            <input class="input" type="text" name="movie[image_url]" placeholder="Image URL" value="<%= movie.image_url %>">
                         </div>
                         <div class="field">
                             <label>Status</label>
-                            <select id="status" name="movie[status]" value="<%= movie.status%>" class="">
+                            <select id="status" name="movie[status]" value="<%= movie.status %>" class="">
                                 <option value="Plan To Watch">Plan To Watch</option>
                                 <option value="Watching">Watching</option>
                                 <option value="Completed">Completed</option>
@@ -45,7 +49,7 @@
                         </div>
                         <div class="btn-div">
                             <button class="ui inverted secondary button" type="submit">Submit</button>
-                            <button formaction="/watchlist/<%= movie.id%>?_method=DELETE" class="ui inverted secondary button" type="submit"> Delete</button>
+                            <button formaction="/watchlist/<%= movie.id %>?_method=DELETE" class="ui inverted secondary button" type="submit"> Delete</button>
                             <a href="/watchlist"><button type="button" class="ui inverted secondary button">Cancel</button></a>    
                         </div>
                     </form>
@@ -54,4 +58,4 @@
             </div>
         </div>
 
-<%- include("./partials/footer.ejs")%>
+<%- include("./partials/footer.ejs") %>

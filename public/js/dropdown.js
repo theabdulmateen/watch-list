@@ -1,5 +1,5 @@
-const dropdownButtons = document.querySelectorAll(".dropdown.button");
-const menuList = document.querySelectorAll(".dropdown.button + .menu");
+const dropdownButtons   = document.querySelectorAll(".dropdown.button");
+const menuList          = document.querySelectorAll(".dropdown.button + .menu");
 let hideId;
 
 for (let i = 0; i < dropdownButtons.length; i++) {
@@ -10,7 +10,7 @@ for (let i = 0; i < dropdownButtons.length; i++) {
         } else {
             menuList[i].classList.add("visible");
             menuList[i].classList.add("opacity-one");
-        };
+        }
     });
 
     // hide the overflow list after completing all the subsequent events (button links) 
@@ -36,27 +36,6 @@ for (let i = 0; i < dropdownButtons.length; i++) {
         }
         event.stopPropagation();
     });
-
-    // shitty approach
-    // let hideOverflow = true;
-    // let buttonList = menuList[i].children[0].children[0].children;   
-    // for (let i = 0; i < buttonList.length; i++) {
-    //     buttonList[i].addEventListener("focus", () => {
-    //         hideOverflow = false;
-    //     });
-    //     buttonList[i].addEventListener("focusout", () => {
-    //         hideOverflow = true;
-    //     });
-    // }
-    // dropdownButtons[i].addEventListener("focusout", () => {
-    //     hideOverflow = true;
-    // }); 
-    // buttonGroup[i].addEventListener("focusout", (event) => {
-    //    if (hideOverflow) {
-    //         menuList[i].classList.remove("opacity-one");
-    //     } 
-    // })
-
 }
 
 function hideFunc(index) {

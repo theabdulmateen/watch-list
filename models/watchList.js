@@ -7,7 +7,7 @@ const watchlistSchema = new mongoose.Schema({
     status: {type: String, default: "plan to watch"},
     synopsis: {type: String, default: "Synopsis"},
     dateAdded: {type: Date, default: Date.now},
-    // URL: {type: url, default: ""}
+    image_url: {type: String, default: "imageDefault.png"},
     user: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

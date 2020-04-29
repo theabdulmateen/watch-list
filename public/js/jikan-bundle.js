@@ -888,7 +888,7 @@ const searchBar = document.getElementById("anime-search");
 const dropdown = document.querySelector(".search-list");
 
 
-searchBar.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", (event) => {
     event = event || window.event;
     dropdown.innerHTML = "";
 
@@ -897,68 +897,59 @@ searchBar.addEventListener("keydown", (event) => {
 
         if (searchQuery.length > 2) {
             jikanjs.search(type = 'anime', query = searchQuery, page = null, params = {}, limit = 10).then((animeList) => {
-                if (animeList.length === 0) {
-                    const textFeedback = document.createTextNode("No Data Available.");
+                animeList.results.forEach((anime) => {
+                    const div = document.createElement("div");
+
                     const searchlist__details = document.createElement("div");
                     searchlist__details.classList.add("search-list__details");
 
-                    searchlist__details.appendChild(textFeedback);
+                    const searchlist__item = document.createElement("div");
+                    searchlist__item.classList.add("search-list__item");
 
+                    const img = document.createElement("img");
+                    img.src = anime.image_url;
+
+                    const animeTitle = document.createElement("h2");
+                    animeTitle.appendChild(document.createTextNode(anime.title));
+
+                    const type = document.createElement("h4");
+                    type.appendChild(document.createTextNode("Type: " + anime.type));
+
+                    const score = document.createElement("span");
+                    score.appendChild(document.createTextNode("Score: " + anime.score));
+                    score.classList.add("search-list__score");
+
+                    const synopsis = document.createElement("span");
+                    synopsis.appendChild(document.createTextNode("Synopsis: " + anime.synopsis));
+                    synopsis.classList.add("searchlist__synopsis");
+
+                    const addButton = document.createElement("button");
+                    addButton.appendChild(document.createTextNode("Add To WatchList"));
+                    addButton.classList.add("ui");
+                    addButton.classList.add("button");
+                    addButton.classList.add("search-list__addButton");
+                    addButton.addEventListener("click", (event) => {
+                        addToWatchList(anime).catch(err => console.log(err));;
+                    });
+
+                    searchlist__details.appendChild(animeTitle);
+                    searchlist__details.appendChild(type);
+                    searchlist__details.appendChild(score);
+                    searchlist__details.appendChild(synopsis);
+                    searchlist__details.appendChild(synopsis);
+                    searchlist__details.appendChild(addButton);
+
+                    div.appendChild(img); 
+                    div.appendChild(searchlist__details); 
+
+                    searchlist__item.appendChild(div);
                     dropdown.appendChild(searchlist__item);
-                } else {
-                    animeList.results.forEach((anime) => {
-                        const div = document.createElement("div");
+                    dropdown.appendChild(searchlist__item);
 
-                        const searchlist__details = document.createElement("div");
-                        searchlist__details.classList.add("search-list__details");
-
-                        const searchlist__item = document.createElement("div");
-                        searchlist__item.classList.add("search-list__item");
-
-                        const img = document.createElement("img");
-                        img.src = anime.image_url;
-
-                        const animeTitle = document.createElement("h2");
-                        animeTitle.appendChild(document.createTextNode(anime.title));
-
-                        const type = document.createElement("h4");
-                        type.appendChild(document.createTextNode("Type: " + anime.type));
-
-                        const score = document.createElement("span");
-                        score.appendChild(document.createTextNode("Score: " + anime.score));
-                        score.classList.add("search-list__score");
-
-                        const synopsis = document.createElement("span");
-                        synopsis.appendChild(document.createTextNode("Synopsis: " + anime.synopsis));
-                        synopsis.classList.add("searchlist__synopsis");
-
-                        const addButton = document.createElement("button");
-                        addButton.appendChild(document.createTextNode("Add To WatchList"));
-                        addButton.classList.add("ui");
-                        addButton.classList.add("button");
-                        addButton.classList.add("search-list__addButton");
-                        addButton.addEventListener("click", (event) => {
-                            addToWatchList(anime).catch(err => console.log(err));;
-                        });
-
-                        searchlist__details.appendChild(animeTitle);
-                        searchlist__details.appendChild(type);
-                        searchlist__details.appendChild(score);
-                        searchlist__details.appendChild(synopsis);
-                        searchlist__details.appendChild(addButton);
-
-                        div.appendChild(img); 
-                        div.appendChild(searchlist__details); 
-
-                        searchlist__item.appendChild(div);
-                        dropdown.appendChild(searchlist__item);
-                    }); 
-                }
+                });
             }).catch((err) => {
                 console.error(err);
             });
-        } else {
-
         }
     }
 });
@@ -969,6 +960,7 @@ async function addToWatchList(anime) {
     const params = new URLSearchParams();
 
     let animeLoaded = await jikanjs.loadAnime(anime.mal_id, '' );
+    // console.log(animeLoaded);
 
     let genre = animeLoaded.genres[0].name;
     for (let i = 1; i < animeLoaded.genres.length; i++) {
@@ -978,6 +970,7 @@ async function addToWatchList(anime) {
     params.append("movie[genre]", genre);
     params.append('movie[title]', anime.title);
     params.append('movie[synopsis]', anime.synopsis);
+    params.append('movie[image_url]', anime.image_url);
 
     const fetchParam = {
         method: "POST",
@@ -988,14 +981,4 @@ async function addToWatchList(anime) {
     window.location.href = "/watchlist";
 }
 
-// function genre() {
-//     var genre = '';
-//     return function(genres) {
-//         genre = genres[0].name;
-//         for (let i = 1; i < genres.length; i++) {
-//             genre += ', ' + genres[i].name;
-//         }
-//         return genre;
-//     }
-// }
 },{"jikanjs":2,"node-fetch":6}]},{},[7]);

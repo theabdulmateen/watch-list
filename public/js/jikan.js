@@ -5,7 +5,7 @@ const searchBar = document.getElementById("anime-search");
 const dropdown = document.querySelector(".search-list");
 
 
-searchBar.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", (event) => {
     event = event || window.event;
     dropdown.innerHTML = "";
 
@@ -77,6 +77,7 @@ async function addToWatchList(anime) {
     const params = new URLSearchParams();
 
     let animeLoaded = await jikanjs.loadAnime(anime.mal_id, '' );
+    // console.log(animeLoaded);
 
     let genre = animeLoaded.genres[0].name;
     for (let i = 1; i < animeLoaded.genres.length; i++) {
@@ -86,6 +87,7 @@ async function addToWatchList(anime) {
     params.append("movie[genre]", genre);
     params.append('movie[title]', anime.title);
     params.append('movie[synopsis]', anime.synopsis);
+    params.append('movie[image_url]', anime.image_url);
 
     const fetchParam = {
         method: "POST",
